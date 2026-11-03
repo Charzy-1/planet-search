@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/style.css">
   <title>Planet search</title>
 </head>
 <body>
@@ -10,12 +12,12 @@
   <h1>Explore the Solar System</h1>
 
   <div class="search-row">
-    <input class="js-planet-input" type="text">
-    <button class="js-search-btn">Search</button>
+    <input id="js-planet-input" type="text" placeholder="Type a planet name (e.g. Earth)">
+    <button id="js-search-btn">Search</button>
   </div>
 
-  <div id="result">
-    <p class="message"></p>
+  <div id="js-result">
+    <p class="message">Search for a planet to see the details</p>
   </div>
   
 
