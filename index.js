@@ -21,7 +21,7 @@
       // Converting JSON into JavaScript data
       planets = await response.json(); // parse JSON text into a JS array
     } catch (err) {
-      js-resultDiv.innerHTML = `<p class="message">Couldn't load planet data. Please refresh.</p>`;
+      js_resultDiv.innerHTML = `<p class="message">Couldn't load planet data. Please refresh.</p>`;
       console.error(err);
     }
   }
@@ -34,7 +34,7 @@
 
   function handleSearch() {
     const name = input.value;
-
+    if (!name) return;
     console.log(name);
     
   }
