@@ -31,3 +31,9 @@
     const planetName = name.trim().toLowerCase();
     return planets.find(p => p.name.toLowerCase() === planetName);
   }
+
+  function handleSearch() {
+    const name = input.value;
+
+    
+  }
