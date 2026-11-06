@@ -35,6 +35,8 @@
   function handleSearch() {
     const name = input.value;
     if (!name) return;
-    
-    
+  }
+
+  function allySearch () {
+    console.log('Hello');
   }
