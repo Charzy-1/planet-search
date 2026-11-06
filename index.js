@@ -35,6 +35,6 @@
   function handleSearch() {
     const name = input.value;
     if (!name) return;
-    console.log(name);
+    
     
   }
