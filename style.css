@@ -102,17 +102,19 @@
   }
 
   .planet-type {
-    color: var(--accent);
+    color: #0079FF;
     font-size: 14px;
     margin: 2px 0 10px;
     font-weight: 500;
   }
 
   .planet-desc {
-    color: var(--text-muted);
+    color: #4B6A9B;
     font-size: 13.5px;
     line-height: 1.5;
+    letter-spacing: 0.2rem;
     margin: 0;
+    opacity: 70%;
   }
 
   .stat-box {
@@ -129,6 +131,32 @@
     color: var(--text-muted);
     font-size: 12.5px;
     margin-bottom: 4px;
+  }
+
+  .stat-value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .mini-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 14px;
+    column-gap: 12px;
+  }
+
+  .mini-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+  }
+
+  .mini-stat .icon {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    color: var(--text-main);
   }
 
   .message {

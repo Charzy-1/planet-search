@@ -13,13 +13,23 @@
   // --- Step 1: fetch the data as soon as the page loads ---
   async function loadPlanets() {
     try {
-      // Create a variable that stores the response of the server
       const response = await fetch(API_URL);
 
       if (!response.ok) throw new Error("Network response was not ok");
 
-      // Converting JSON into JavaScript data
-      planets = await response.json(); // parse JSON text into a JS array
+      // Fetch and store planet data
+      planets = await response.json();
+
+      // Display Earth automatically when the page loads
+      const defaultPlanet = findPlanet("Earth");
+
+      if (defaultPlanet) {
+        renderPlanet(defaultPlanet);
+      }
+
+      // Keep the search input empty
+      input.value = "";
+
     } catch (err) {
       resultDiv.innerHTML = `<p class="message">Couldn't load planet data. Please refresh.</p>`;
       console.error(err);
@@ -62,28 +72,41 @@
         </div>
 
         <div class="mini-stats">
-          <div class="mini-stat"><span class="icon">&#127777;</span> ${planet.temperature}</div>
-          <div class="mini-stat"><span class="icon">&#9790;</span> ${planet.moons}</div>
+          <div class="mini-stat">
+            <span class="icon"><img src="/images/temperature.png" alt=""></span> 
+            ${planet.temperature}
+          </div>
+          <div class="mini-stat"><span class="icon"><img src="/images/moon.png" alt=""></span> ${planet.moons}</div>
           <div class="mini-stat"><span class="icon">&#9679;</span> ${planet.diameter}</div>
-          <div class="mini-stat"><span class="icon">&#9728;</span> ${planet.distanceFromSun}</div>
+          <div class="mini-stat"><span class="icon"><img src="/images/setting.png" alt=""></span> ${planet.distanceFromSun}</div>
         </div>
       </div>
     `;
   }
 
   // --- Step 4: what happens when the user searches ---
-  function handleSearch() {
-    const name = input.value;
-    if (!name) return;
+function handleSearch() {
+  const name = input.value.trim();
 
-    const planet = findPlanet(name);
+  if (!name) return;
 
-    if (planet) {
-      renderPlanet(planet);
-    } else {
-      resultDiv.innerHTML = `<p class="message">No planet found called "${name}". Try Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, or Pluto.</p>`;
-    }
+  const planet = findPlanet(name);
+
+  if (planet) {
+    renderPlanet(planet);
+
+    // Clear the input after a successful search
+    input.value = "";
+  } else {
+    resultDiv.innerHTML = `
+      <p class="message">
+        No planet found called "${name}".
+        Try Mercury, Venus, Earth, Mars, Jupiter, Saturn,
+        Uranus, Neptune, or Pluto.
+      </p>
+    `;
   }
+}
 
   // Trigger search on button click...
   button.addEventListener("click", handleSearch);
