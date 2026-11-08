@@ -21,7 +21,7 @@
       // Converting JSON into JavaScript data
       planets = await response.json(); // parse JSON text into a JS array
     } catch (err) {
-      js_resultDiv.innerHTML = `<p class="message">Couldn't load planet data. Please refresh.</p>`;
+      resultDiv.innerHTML = `<p class="message">Couldn't load planet data. Please refresh.</p>`;
       console.error(err);
     }
   }
@@ -32,8 +32,56 @@
     return planets.find(p => p.name.toLowerCase() === planetName);
   }
 
+// --- Step 3: build the card's HTML from a planet object ---
+  function renderPlanet(planet) {
+    resultDiv.innerHTML = `
+      <div class="card">
+        <div class="card-header">
+          <img class="planet-photo" src="${planet.image}" alt="${planet.name}" />
+          <div>
+            <p class="planet-name">${planet.name}</p>
+            <p class="planet-type">${planet.type}</p>
+          </div>
+        </div>
+
+        <p class="planet-desc">${planet.description}</p>
+
+        <div class="stat-box">
+          <div>
+            <div class="stat-label">Gravity</div>
+            <div class="stat-value">${planet.gravity}</div>
+          </div>
+          <div>
+            <div class="stat-label">Mass</div>
+            <div class="stat-value">${planet.mass}</div>
+          </div>
+          <div>
+            <div class="stat-label">Period</div>
+            <div class="stat-value">${planet.period}</div>
+          </div>
+        </div>
+
+        <div class="mini-stats">
+          <div class="mini-stat"><span class="icon">&#127777;</span> ${planet.temperature}</div>
+          <div class="mini-stat"><span class="icon">&#9790;</span> ${planet.moons}</div>
+          <div class="mini-stat"><span class="icon">&#9679;</span> ${planet.diameter}</div>
+          <div class="mini-stat"><span class="icon">&#9728;</span> ${planet.distanceFromSun}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  // --- Step 4: what happens when the user searches ---
   function handleSearch() {
     const name = input.value;
     if (!name) return;
+
+    const planet = findPlanet(name);
+
+    if (planet) {
+      renderPlanet(planet);
+    } else {
+      resultDiv.innerHTML = `<p class="message">No planet found called "${name}". Try Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, or Pluto.</p>`;
+    }
   }
 
