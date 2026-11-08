@@ -69,6 +69,68 @@
     max-width: 420px;
   }
 
+  /* --- Result card --- */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card-header {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .planet-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #1a2550;
+  }
+
+  .planet-name {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .planet-type {
+    color: var(--accent);
+    font-size: 14px;
+    margin: 2px 0 10px;
+    font-weight: 500;
+  }
+
+  .planet-desc {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .stat-box {
+    background: var(--stat-bg);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .stat-box div { text-align: left; }
+
+  .stat-label {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    margin-bottom: 4px;
+  }
+
   .message {
     color: var(--text-muted);
     text-align: center;
