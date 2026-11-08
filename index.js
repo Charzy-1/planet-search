@@ -85,3 +85,14 @@
     }
   }
 
+  // Trigger search on button click...
+  button.addEventListener("click", handleSearch);
+
+  // ...or when the user presses Enter inside the input.
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleSearch();
+  });
+
+  // Kick things off.
+  loadPlanets();
+
