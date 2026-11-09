@@ -2,6 +2,7 @@
     --bg: #0d1530;
     --card-bg: #131c3e;
     --stat-bg: #0a1230;
+    --text-main: #f4f6fb;
     --text-muted: #7b89b3;
     --accent: #4d8dff;
     --border: #22305e;
@@ -35,6 +36,7 @@
     width: 100%;
     max-width: 420px;
     margin-bottom: 32px;
+    
   }
 
   #js-planet-input {
